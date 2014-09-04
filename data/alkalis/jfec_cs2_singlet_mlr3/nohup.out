@@ -1,0 +1,28 @@
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+1d_schrodinger.x   0000000000406312  Unknown               Unknown  Unknown
+1d_schrodinger.x   000000000040410E  Unknown               Unknown  Unknown
+1d_schrodinger.x   00000000004032BC  Unknown               Unknown  Unknown
+libc.so.6          0000003BB9A1ECDD  Unknown               Unknown  Unknown
+1d_schrodinger.x   00000000004031B9  Unknown               Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+1d_schrodinger.x   0000000000406708  Unknown               Unknown  Unknown
+1d_schrodinger.x   00000000004040EF  Unknown               Unknown  Unknown
+1d_schrodinger.x   00000000004032BC  Unknown               Unknown  Unknown
+libc.so.6          0000003BB9A1ECDD  Unknown               Unknown  Unknown
+1d_schrodinger.x   00000000004031B9  Unknown               Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+1d_schrodinger.x   0000000000406702  Unknown               Unknown  Unknown
+1d_schrodinger.x   00000000004040EF  Unknown               Unknown  Unknown
+1d_schrodinger.x   00000000004032BC  Unknown               Unknown  Unknown
+libc.so.6          0000003BB9A1ECDD  Unknown               Unknown  Unknown
+1d_schrodinger.x   00000000004031B9  Unknown               Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+1d_schrodinger.x   00000000004064D7  Unknown               Unknown  Unknown
+1d_schrodinger.x   00000000004040EF  Unknown               Unknown  Unknown
+1d_schrodinger.x   00000000004032BC  Unknown               Unknown  Unknown
+libc.so.6          0000003BB9A1ECDD  Unknown               Unknown  Unknown
+1d_schrodinger.x   00000000004031B9  Unknown               Unknown  Unknown

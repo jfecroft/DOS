@@ -1,0 +1,37 @@
+Traceback (most recent call last):
+  File "rovib.py", line 45, in <module>
+    run_1d_schrodinger(inputfile,outputfile,i)
+  File "rovib.py", line 34, in run_1d_schrodinger
+    subprocess.call(home+"/1d_schrodinger.x < " + inputfile_name, stdout=open(os.devnull, 'w'), shell=True)
+  File "/usr/lib64/python2.6/subprocess.py", line 480, in call
+    return p.wait(timeout=timeout)
+  File "/usr/lib64/python2.6/subprocess.py", line 1296, in wait
+    pid, sts = _eintr_retry_call(os.waitpid, self.pid, 0)
+  File "/usr/lib64/python2.6/subprocess.py", line 462, in _eintr_retry_call
+    return func(*args)
+KeyboardInterrupt
+forrtl: error (69): process interrupted (SIGINT)
+Image              PC                Routine            Line        Source             
+1d_schrodinger.x   0000000000406510  Unknown               Unknown  Unknown
+1d_schrodinger.x   000000000040410E  Unknown               Unknown  Unknown
+1d_schrodinger.x   00000000004032BC  Unknown               Unknown  Unknown
+libc.so.6          0000003BB9A1ECDD  Unknown               Unknown  Unknown
+1d_schrodinger.x   00000000004031B9  Unknown               Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+1d_schrodinger.x   000000000040670D  Unknown               Unknown  Unknown
+1d_schrodinger.x   000000000040410E  Unknown               Unknown  Unknown
+1d_schrodinger.x   00000000004032BC  Unknown               Unknown  Unknown
+libc.so.6          0000003BB9A1ECDD  Unknown               Unknown  Unknown
+1d_schrodinger.x   00000000004031B9  Unknown               Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+1d_schrodinger.x   000000000040657D  Unknown               Unknown  Unknown
+1d_schrodinger.x   000000000040407E  Unknown               Unknown  Unknown
+1d_schrodinger.x   000000000040329C  Unknown               Unknown  Unknown
+libc.so.6          000000375CE1ED1D  Unknown               Unknown  Unknown
+1d_schrodinger.x   0000000000403199  Unknown               Unknown  Unknown
+Traceback (most recent call last):
+  File "rovib.py", line 54, in <module>
+    for i in range(lmin,lmax+1):
+NameError: name 'lmin' is not defined

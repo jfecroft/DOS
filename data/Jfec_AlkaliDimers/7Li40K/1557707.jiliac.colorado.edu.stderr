@@ -1,0 +1,15 @@
+/bin/sh: /users/bohn/jacr7386/for_john/data/Jfec_AlkaliDimers/7Li40K/../../1d_schrodinger.x: Input/output error
+Traceback (most recent call last):
+  File "rovib.py", line 44, in <module>
+    run_1d_schrodinger(inputfile,outputfile,i)
+  File "rovib.py", line 32, in run_1d_schrodinger
+    replace(inputfile_name, ' L', L) #editing inputfile such that L=L is called
+  File "rovib.py", line 26, in replace
+    shutil.move(abs_path, file)
+  File "/usr/lib64/python2.6/shutil.py", line 260, in move
+    copy2(src, real_dst)
+  File "/usr/lib64/python2.6/shutil.py", line 95, in copy2
+    copyfile(src, dst)
+  File "/usr/lib64/python2.6/shutil.py", line 51, in copyfile
+    with open(dst, 'wb') as fdst:
+IOError: [Errno 5] Input/output error: 'input.txt'

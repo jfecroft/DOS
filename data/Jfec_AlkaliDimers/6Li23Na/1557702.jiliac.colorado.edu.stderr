@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "rovib.py", line 44, in <module>
+    run_1d_schrodinger(inputfile,outputfile,i)
+  File "rovib.py", line 32, in run_1d_schrodinger
+    replace(inputfile_name, ' L', L) #editing inputfile such that L=L is called
+  File "rovib.py", line 16, in replace
+    old_file = open(file)
+IOError: [Errno 5] Input/output error: 'input.txt'

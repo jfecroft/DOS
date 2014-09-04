@@ -1,0 +1,25 @@
+&TTDATA
+ ZMA   = 484543.634594,
+ ZMB   = 484543.634594,
+ R0    = 10.71669006644936,
+ BETA  = 0.55987436072114682,
+ DHART = 0.0090452367437799212,
+ NPRIN = 0,
+ NWRIT = 550,
+ L = 500, 
+ RMAX = 100.0D0,
+ RMIN = 6.5D0,
+ MORLJ = .FALSE.
+ C6   = 27404.0,
+ C8   = 0.0D0, 
+ C10  = 0.0D0, 
+ C12  = 20756206754.798901,
+&END
+
+
+!C6 from PRA 82 012510 2010 L&M&LK&C
+!following NJP 12 073041 2010 kotochigova C6(Cs2+Cs2) = C6(Cs2)+C6(Cs2)+2*C6(Cs2)
+!De from Byrd, Jason N., "Ultracold Chemistry of Alkali Clusters" (2013).
+!Doctoral Dissertations. Paper 53. 1985.2 cm-1
+
+

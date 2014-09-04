@@ -1,0 +1,3 @@
+sys  cmplx_dirn dimer_filen dimer_dirn cmplx_filen
+mayle_krbkrb   data/alkalis/krbkrb/ krb_results_j_dvr10000_rauto.dat   data/alkalis/krb/ krbkrb_results_j_dvr10000_rauto.dat
+mayle_rbcsrbcs   data/alkalis/rbcsrbcs/ rbcs_results_j_dvr10000_rauto.dat   data/alkalis/rbcs/ rbcsrbcs_results_j_dvr10000_rauto.dat
