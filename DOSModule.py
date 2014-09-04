@@ -51,7 +51,7 @@ class AtomMoleculeDOS:
  def __init__(self, filen):
   self.systems = get_data(filen)
 
- def _compute_dos_AtomMolecule(self,J,MQN,bs_c,bs_d,vmax,energy_range=10.0,energy_offset=0.0):
+ def _compute_dos(self,J,MQN,bs_c,bs_d,vmax,energy_range=10.0,energy_offset=0.0):
   if abs(MQN) > abs(J):
    print 'physically impossible (abs(MJ) > abs(J))'
    return
@@ -75,11 +75,11 @@ class AtomMoleculeDOS:
   return dos,lt
 
 
- def get_dos_AtomMolecule(self, key,J=0,MQN=0,nmax=100,vmax=9999,energy_offset=0.0):
+ def get_dos(self, key,J=0,MQN=0,nmax=100,vmax=9999,energy_offset=0.0):
   lmax  = nmax + J
   self.bs_d, self.nmax =  _read_data(self.systems[key]['dimer_dirn'],self.systems[key]['dimer_filen'],nmax)
   self.bs_c, self.lmax =  _read_data(self.systems[key]['cmplx_dirn'],self.systems[key]['cmplx_filen'],lmax)
-  self.dos,  self.lt   =  AtomMoleculeDOS._compute_dos_AtomMolecule(self,J,MQN,self.bs_c,self.bs_d,vmax=vmax,energy_offset=energy_offset)
+  self.dos,  self.lt   =  AtomMoleculeDOS._compute_dos(self,J,MQN,self.bs_c,self.bs_d,vmax=vmax,energy_offset=energy_offset)
 
 
 class MoleculeMoleculeDOS:
