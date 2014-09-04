@@ -51,11 +51,12 @@ class AtomMoleculeDOS:
  def __init__(self, filen):
   self.systems = get_data(filen)
 
- def _compute_dos_AtomMolecule(self,J,MQN,bs_c,bs_d,vmax,energy_range=10.0):
+ def _compute_dos_AtomMolecule(self,J,MQN,bs_c,bs_d,vmax,energy_range=10.0,energy_offset=0.0):
   if abs(MQN) > abs(J):
    print 'physically impossible (abs(MJ) > abs(J))'
    return
   limit = (energy_range/2.0)*KtoEh                    #convert number between +-energy_range K to hartrees
+  energy_offset *= KtoEh
   outside = np.ma.masked_outside                      #masked all enties in in list outside range
   count   = np.ma.count                               #counts the number of unmasked entries in a list
   abs_gs = bs_d[0][0]
@@ -66,19 +67,19 @@ class AtomMoleculeDOS:
      for v in xrange(min(len(bs_d[n]),vmax+1)):        #looping over all vibrational levels of a
       d = len(xrange(max(-l,MQN-n),min(l,MQN+n)))+1    #degeneracy
       threshold_energy = bs_d[n][v]-abs_gs
-      num += count(outside(bs_c[l],-limit-threshold_energy,limit-threshold_energy))*d
+      num += count(outside(bs_c[l],-limit-threshold_energy+energy_offset,limit-threshold_energy+energy_offset))*d
  
   dos = (float(num)/energy_range)*1.0E-3
-  lt = dos*1.0E3*EhtoK*2.0*pi*AtomicUnitOfTime * 1.0e9
+  lt = dos*1.0E3*EhtoK*2.0*pi*AtomicUnitOfTime*1.0e9
  #return dos in mK-1 and lifetime in ns
   return dos,lt
 
 
- def get_dos_AtomMolecule(self, key,J=0,MQN=0,nmax=100,vmax=9999):
+ def get_dos_AtomMolecule(self, key,J=0,MQN=0,nmax=100,vmax=9999,energy_offset=0.0):
   lmax  = nmax + J
   self.bs_d, self.nmax =  _read_data(self.systems[key]['dimer_dirn'],self.systems[key]['dimer_filen'],nmax)
   self.bs_c, self.lmax =  _read_data(self.systems[key]['cmplx_dirn'],self.systems[key]['cmplx_filen'],lmax)
-  self.dos,  self.lt   =  AtomMoleculeDOS._compute_dos_AtomMolecule(self,J,MQN,self.bs_c,self.bs_d,vmax=vmax)
+  self.dos,  self.lt   =  AtomMoleculeDOS._compute_dos_AtomMolecule(self,J,MQN,self.bs_c,self.bs_d,vmax=vmax,energy_offset=energy_offset)
 
 
 class MoleculeMoleculeDOS:
