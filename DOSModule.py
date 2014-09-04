@@ -74,12 +74,36 @@ class AtomMoleculeDOS:
  #return dos in mK-1 and lifetime in ns
   return dos,lt
 
+ def _compute_num_open(self,J,MQN,bs_c,bs_d,vmax,energy_range=10.0,energy_offset=0.0):
+  if abs(MQN) > abs(J):
+   print 'physically impossible (abs(MJ) > abs(J))'
+   return
+  limit = (energy_range/2.0)*KtoEh                    #convert number between +-energy_range K to hartrees
+  energy_offset *= KtoEh
+  outside = np.ma.masked_outside                      #masked all enties in in list outside range
+  count   = np.ma.count                               #counts the number of unmasked entries in a list
+  abs_gs  = bs_d[0][0]
+  num_open= 0
+  for n in xrange(len(bs_d)):                          #looping over rotational state of dimer a
+   for l in xrange(len(bs_c)):                         #looping over all l constant with J
+    if abs(n-l) <= J and n+l >= J:                     #only include pairs of rotational levels which can couple to form J
+     for v in xrange(min(len(bs_d[n]),vmax+1)):        #looping over all vibrational levels of a
+      threshold_energy = bs_d[n][v]-abs_gs
+      if threshold_energy < energy_offset: num_open += 1
+  return num_open
 
  def get_dos(self, key,J=0,MQN=0,nmax=100,vmax=9999,energy_offset=0.0):
   lmax  = nmax + J
   self.bs_d, self.nmax =  _read_data(self.systems[key]['dimer_dirn'],self.systems[key]['dimer_filen'],nmax)
   self.bs_c, self.lmax =  _read_data(self.systems[key]['cmplx_dirn'],self.systems[key]['cmplx_filen'],lmax)
   self.dos,  self.lt   =  AtomMoleculeDOS._compute_dos(self,J,MQN,self.bs_c,self.bs_d,vmax=vmax,energy_offset=energy_offset)
+
+ def get_num_open(self, key,J=0,MQN=0,nmax=100,vmax=9999,energy_offset=0.0):
+  lmax  = nmax + J
+  self.bs_d, self.nmax =  _read_data(self.systems[key]['dimer_dirn'],self.systems[key]['dimer_filen'],nmax)
+  self.bs_c, self.lmax =  _read_data(self.systems[key]['cmplx_dirn'],self.systems[key]['cmplx_filen'],lmax)
+  self.num_open   =  AtomMoleculeDOS._compute_num_open(self,J,MQN,self.bs_c,self.bs_d,vmax=vmax,energy_offset=energy_offset)
+
 
 
 class MoleculeMoleculeDOS:
