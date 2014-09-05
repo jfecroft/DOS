@@ -18,19 +18,19 @@ print 'system  dos(mK-1) lt(ns)'
 #Long-Lived Complexes and Chaos in Ultracold Molecular Collisions
 #            J. F. E. Croft and J. L. Bohn, Phys. Rev. A 89, 102714 (2014). 
 for system in Jfec_AlkaliAtomPlusDimer.systems.keys():
- Jfec_AlkaliAtomPlusDimer.get_dos(system,J=J,MQN=MQN,nmax=nmax,vmax=vmax,energy_offset=collision_energy)
- print system,Jfec_AlkaliAtomPlusDimer.dos,Jfec_AlkaliAtomPlusDimer.lt
+ dos, lt =Jfec_AlkaliAtomPlusDimer.get_dos(system,J=J,MQN=MQN,nmax=nmax,vmax=vmax,energy_offset=collision_energy)
+ print system,dos,lt
 
 
 #printing dos and lt for alkali atom + dimer collisions as published in
 #statistical Aspects of Ultracold Resonant Scattering-- M. Mayle, B. P. Ruzic, and J. L. Bohn, Phys. Rev. A 85, 062712 (2012).
 for system in Mayle_AlkaliAtomPlusDimer.systems.keys():
- Mayle_AlkaliAtomPlusDimer.get_dos(system,J=J,MQN=MQN,nmax=nmax,vmax=vmax,energy_offset=collision_energy)
- print system,Mayle_AlkaliAtomPlusDimer.dos,Mayle_AlkaliAtomPlusDimer.lt
+ dos, lt = Mayle_AlkaliAtomPlusDimer.get_dos(system,J=J,MQN=MQN,nmax=nmax,vmax=vmax,energy_offset=collision_energy)
+ print system,dos,lt
 
 #printing dos and lt for helium + hydrocarbon collisions 
 #as yet unpublished
 for system in HeliumPlusHydrocarbon.systems.keys():
- HeliumPlusHydrocarbon.get_dos(system,J=J,MQN=MQN,nmax=nmax,vmax=vmax,energy_offset=collision_energy)
- print system,HeliumPlusHydrocarbon.dos,HeliumPlusHydrocarbon.lt
+ dos, lt = HeliumPlusHydrocarbon.get_dos(system,J=J,MQN=MQN,nmax=nmax,vmax=vmax,energy_offset=collision_energy)
+ print system,dos,lt
 

@@ -1,5 +1,4 @@
 import DOSModule
-import sys
 #these can take awhile (days) to run for full converged results
 
 filen ='Jfec_AlkaliDimerPlusDimer.txt'
@@ -17,11 +16,10 @@ print 'system  dos(uK-1) lt(ms)'
 #reproducing data published in 
 #Scattering of Ultracold Molecules in the Highly Resonant Regime -- M. Mayle, G. Quemener, B. P. Ruzic, and J. L. Bohn, Phys. Rev. A 87, 012709 (2013).
 for system in Mayle_AlkaliDimerPlusDimer.systems.keys():
- Mayle_AlkaliDimerPlusDimer.get_dos_MoleculeMolecule(system,J=J,MQN=MQN,nmax=nmax,vmax=vmax)
- print system, Mayle_AlkaliDimerPlusDimer.dos, Mayle_AlkaliDimerPlusDimer.lt
- sys.stdout.flush()
+ dos, lt = Mayle_AlkaliDimerPlusDimer.get_dos_MoleculeMolecule(system,J=J,MQN=MQN,nmax=nmax,vmax=vmax)
+ print system, dos, lt
 
 for system in Jfec_AlkaliDimerPlusDimer.systems.keys():
- Jfec_AlkaliDimerPlusDimer.get_dos_MoleculeMolecule(system,J=J,MQN=MQN,nmax=nmax,vmax=vmax)
- print system, Jfec_AlkaliDimerPlusDimer.dos, Jfec_AlkaliDimerPlusDimer.lt
+ dos, lt = Jfec_AlkaliDimerPlusDimer.get_dos_MoleculeMolecule(system,J=J,MQN=MQN,nmax=nmax,vmax=vmax)
+ print system, dos, lt
 
