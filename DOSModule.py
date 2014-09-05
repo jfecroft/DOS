@@ -97,12 +97,14 @@ class AtomMoleculeDOS:
   self.bs_d, self.nmax =  _read_data(self.systems[key]['dimer_dirn'],self.systems[key]['dimer_filen'],nmax)
   self.bs_c, self.lmax =  _read_data(self.systems[key]['cmplx_dirn'],self.systems[key]['cmplx_filen'],lmax)
   self.dos,  self.lt   =  AtomMoleculeDOS._compute_dos(self,J,MQN,self.bs_c,self.bs_d,vmax=vmax,energy_offset=energy_offset)
+  return self.dos, self.lt
 
  def get_num_open(self, key,J=0,MQN=0,nmax=100,vmax=9999,energy_offset=0.0):
   lmax  = nmax + J
   self.bs_d, self.nmax =  _read_data(self.systems[key]['dimer_dirn'],self.systems[key]['dimer_filen'],nmax)
   self.bs_c, self.lmax =  _read_data(self.systems[key]['cmplx_dirn'],self.systems[key]['cmplx_filen'],lmax)
   self.num_open   =  AtomMoleculeDOS._compute_num_open(self,J,MQN,self.bs_c,self.bs_d,vmax=vmax,energy_offset=energy_offset)
+  return self.num_open
 
 
 
@@ -145,7 +147,8 @@ class MoleculeMoleculeDOS:
   lmax       =  2*nmax+J
   self.bs_d, self.nmax =  _read_data(self.systems[key]['dimer_dirn'],self.systems[key]['dimer_filen'],nmax)
   self.bs_c, self.lmax =  _read_data(self.systems[key]['cmplx_dirn'],self.systems[key]['cmplx_filen'],lmax)
-  self.dos,  self.lt   =  MoleculeMoleculeDOS._compute_dos_MoleculeMolecule(self,J,MQN,nmax,vmax,lmax,self.bs_d,self.bs_c)
+  self.dos,  self.lt   =  MoleculeMoleculeDOS._compute_dos_MoleculeMolecule(self,J,MQN,self.nmax,vmax,self.lmax,self.bs_d,self.bs_c)
+  return self.dos,  self.lt
 
 
 
