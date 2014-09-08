@@ -1,6 +1,7 @@
 import numpy as np
 import scipy.constants
 from math import pi
+from collections import OrderedDict
 
 
 #defines some physical constants
@@ -17,7 +18,7 @@ def get_data(filen):
  lines = fo.readlines()
  keys = lines[0].split()
 
- data_dict = {}
+ data_dict = OrderedDict()
 
  for line in lines[1:]:
   items = line.split()
