@@ -34,8 +34,8 @@ for system in systems.systems.keys():
  NumOpen_J3  = np.fromiter(NumOpen_J3_Iter,np.int_)
  Lifetime = np.fromiter(Lifetime_Iter,np.float)
  Lifetime_J3 = np.fromiter(Lifetime_J3_Iter,np.float)
- plt.plot(collision_energies,Lifetime/NumOpen,label='Helium+'+system.split('_')[1].capitalize(),color=color)
- plt.plot(collision_energies,Lifetime_J3/NumOpen_J3,'--',color=color)
+ plt.plot(collision_energies,Lifetime/NumOpen,label='Helium+'+system.split('_')[1].capitalize(),color=color,linewidth=2.0)
+ plt.plot(collision_energies,Lifetime_J3/NumOpen_J3,'--',color=color,linewidth=2.0)
 
 plt.rcParams.update({'font.size': 22})
 plt.legend(loc=0,shadow=True)
