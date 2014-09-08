@@ -37,6 +37,9 @@ for system in systems.systems.keys():
  plt.plot(collision_energies,Lifetime/NumOpen,label='Helium+'+system.split('_')[1].capitalize(),color=color,linewidth=2.0)
  plt.plot(collision_energies,Lifetime_J3/NumOpen_J3,'--',color=color,linewidth=2.0)
 
+
+ErangeLine = np.logspace(0,3,99)
+plt.plot(ErangeLine,5.0/ErangeLine,'-.',linewidth=2.0,color='k')
 plt.rcParams.update({'font.size': 22})
 plt.legend(loc=0,shadow=True)
 plt.xscale('log')
