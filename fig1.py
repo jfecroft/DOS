@@ -38,10 +38,11 @@ for system in systems.systems.keys():
  plt.plot(collision_energies,Lifetime_J3/NumOpen_J3,'--',color=color,linewidth=2.0)
 
 
-ErangeLine = np.logspace(0,3,99)
+ErangeLine = np.logspace(-2,3,99)
 plt.plot(ErangeLine,5.0/ErangeLine,'-.',linewidth=2.0,color='k')
 plt.rcParams.update({'font.size': 22})
 plt.legend(loc=0,shadow=True)
+plt.axvline(x=80.0,linewidth=2.0,color='r')
 plt.xscale('log')
 plt.yscale('log')
 plt.xlabel('Collision Energy (K)')
