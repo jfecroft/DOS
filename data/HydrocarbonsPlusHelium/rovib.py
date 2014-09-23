@@ -30,14 +30,14 @@ def replace(file, pattern, subst):
 def run_1d_schrodinger(inputfile_name,outputfile_name,L):
  home = os.getcwd()
  replace(inputfile_name, ' L', L) #editing inputfile such that L=L is called
- subprocess.call(home+"/1d_schrodinger.x < " + inputfile_name, stdout=open(os.devnull, 'w'), shell=True)
+ subprocess.call(home+"/../1d_schrodinger.x < " + inputfile_name, stdout=open(os.devnull, 'w'), shell=True)
  return()
 
 ############################################
-lmax = 0
-inputfile         = 'input_propane.txt'
+lmax = 20
+inputfile         = 'input_hexane.txt'
 outputfile        = 'fort.10'
-sys               = 'propane'
+sys               = 'hexane'
 
 #generate to states of the dimer for different n upto nmax
 for i in range(0,lmax+1):
