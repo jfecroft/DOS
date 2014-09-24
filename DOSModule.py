@@ -31,7 +31,10 @@ def get_data(filen):
 
 
 def _read_data(dir,inputfile,qnmax):
- """read in the data from precalculated rovibrational energy levels of the system"""
+ """read in the data from precalculated rovibrational energy levels of the system
+ files are og the form 'txtjXXXtxt' where XXX is the L quantum number
+ starting at 0
+ """
  bs = [] #list to store bound states for different L quntum numbers
  for i in xrange(qnmax+1):
   file = dir + inputfile.replace('j','j'+str(i))
@@ -53,6 +56,18 @@ class AtomMoleculeDOS:
   self.systems = get_data(filen)
 
  def _compute_dos(self,J,MQN,bs_c,bs_d,vmax,energy_range=10.0,energy_offset=0.0):
+ """
+ computes the dos for an atom moleucle collsiions as described in
+ Statistical aspects of ultracold resonant scattering Mayle, Rizic and Bohn
+ VAriables
+ J       - total J quantum number.
+ MQN     - MJ projection quantum number. 
+ bs_c    - list of boundstates of the complex obtained from _read_data
+ bs_d    - list of boundstates of the molecule obtained from _read_data
+ vmax    - maximum vibrational quantum number.
+ energy_range  - dos = number of states counted/energy range
+ energy_offset - calculate dos around energy = energy_offset
+ """
   if abs(MQN) > abs(J):
    print 'physically impossible (abs(MJ) > abs(J))'
    return
