@@ -56,18 +56,18 @@ class AtomMoleculeDOS:
   self.systems = get_data(filen)
 
  def _compute_dos(self,J,MQN,bs_c,bs_d,vmax,energy_range=10.0,energy_offset=0.0):
- """
- computes the dos for an atom moleucle collsiions as described in
- Statistical aspects of ultracold resonant scattering Mayle, Rizic and Bohn
- VAriables
- J       - total J quantum number.
- MQN     - MJ projection quantum number. 
- bs_c    - list of boundstates of the complex obtained from _read_data
- bs_d    - list of boundstates of the molecule obtained from _read_data
- vmax    - maximum vibrational quantum number.
- energy_range  - dos = number of states counted/energy range
- energy_offset - calculate dos around energy = energy_offset
- """
+  """
+  computes the dos for an atom moleucle collsiions as described in
+  Statistical aspects of ultracold resonant scattering Mayle, Rizic and Bohn
+  VAriables
+  J       - total J quantum number.
+  MQN     - MJ projection quantum number. 
+  bs_c    - list of boundstates of the complex obtained from _read_data
+  bs_d    - list of boundstates of the molecule obtained from _read_data
+  vmax    - maximum vibrational quantum number.
+  energy_range  - dos = number of states counted/energy range
+  energy_offset - calculate dos around energy = energy_offset
+  """
   if abs(MQN) > abs(J):
    print 'physically impossible (abs(MJ) > abs(J))'
    return
@@ -91,19 +91,19 @@ class AtomMoleculeDOS:
   return dos,lt
 
  def _compute_num_open(self,J,MQN,bs_c,bs_d,vmax,energy_offset=0.0):
- """
- computes the number of threshold channels of the complex with energy less than
- energy_offset.
- Statistical aspects of ultracold resonant scattering Mayle, Rizic and Bohn
- VAriables
- J       - total J quantum number.
- MQN     - MJ projection quantum number. 
- bs_c    - list of boundstates of the complex obtained from _read_data
- bs_d    - list of boundstates of the molecule obtained from _read_data
- vmax    - maximum vibrational quantum number.
- energy_offset - calculate number of threshold channels of the complex with energy less than
- energy_offset. 
- """
+  """
+  computes the number of threshold channels of the complex with energy less than
+  energy_offset.
+  Statistical aspects of ultracold resonant scattering Mayle, Rizic and Bohn
+  VAriables
+  J       - total J quantum number.
+  MQN     - MJ projection quantum number. 
+  bs_c    - list of boundstates of the complex obtained from _read_data
+  bs_d    - list of boundstates of the molecule obtained from _read_data
+  vmax    - maximum vibrational quantum number.
+  energy_offset - calculate number of threshold channels of the complex with energy less than
+  energy_offset. 
+  """
   if abs(MQN) > abs(J):
    print 'physically impossible (abs(MJ) > abs(J))'
    return
@@ -162,7 +162,7 @@ class MoleculeMoleculeDOS:
   """
   computes the dos for an atom moleucle collsiions as described in
   Scattering of Ultracold Molecules in the Highly Resonant Regime --
-  Mayle, Ruzic, Quéméner and Bohn
+  Mayle, Ruzic, Quememer and Bohn
   Variables
   J       - total J quantum number.
   MQN     - MJ projection quantum number. 
@@ -202,15 +202,15 @@ class MoleculeMoleculeDOS:
 
 
  def get_dos_MoleculeMolecule(self, key,J=0,MQN=0,nmax=100,vmax=999):
- """
- simple wrapper around _read_data and MoleculeMoleculeDOS
- Variables 
- J       - total J quantum number.
- MQN     - MJ projection quantum number. 
- nmax    - maximum allowed rotaional quantum number of the molecule.
- vmax    - maximum allowed vibrational quantum number of the molecule.
- energy_offset - calculate dos around energy = energy_offset
- """
+  """
+  simple wrapper around _read_data and MoleculeMoleculeDOS
+  Variables 
+  J       - total J quantum number.
+  MQN     - MJ projection quantum number. 
+  nmax    - maximum allowed rotaional quantum number of the molecule.
+  vmax    - maximum allowed vibrational quantum number of the molecule.
+  energy_offset - calculate dos around energy = energy_offset
+  """
   lmax       =  2*nmax+J
   self.bs_d, self.nmax =  _read_data(self.systems[key]['dimer_dirn'],self.systems[key]['dimer_filen'],nmax)
   self.bs_c, self.lmax =  _read_data(self.systems[key]['cmplx_dirn'],self.systems[key]['cmplx_filen'],lmax)
