@@ -5,9 +5,9 @@ from collections import OrderedDict
 
 
 # define physical constants
-EhtoK = scipy.constants.physical_constants["hartree-kelvin relationship"][0]
-KtoEh = scipy.constants.physical_constants["kelvin-hartree relationship"][0]
-AtomicUnitOfTime = scipy.constants.physical_constants["atomic unit of time"][0]
+EH2K = scipy.constants.physical_constants["hartree-kelvin relationship"][0]
+K2EH = scipy.constants.physical_constants["kelvin-hartree relationship"][0]
+ATOMICUNITOFTIME = scipy.constants.physical_constants["atomic unit of time"][0]
 
 
 def get_data(filen):
@@ -15,8 +15,8 @@ def get_data(filen):
        2nd lines on values for those headings
        returns a nested dictionary
        converts values to float if possible"""
-    fo = open(filen, "r")
-    lines = fo.readlines()
+    open_file = open(filen, "r")
+    lines = open_file.readlines()
     keys = lines[0].split()
 
     data_dict = OrderedDict()
@@ -33,31 +33,31 @@ def get_data(filen):
     return data_dict
 
 
-def _read_data(dir, inputfile, qnmax):
+def _read_data(dir_loc, inputfile, qnmax):
     """read in the data from precalculated rovibrational energy levels of the
     system files are og the form 'txtjXXXtxt' where XXX is the L quantum number
     starting at 0
     """
-    bs = []  # list to store bound states for different L quntum numbers
+    bound_states = []  # bound states for different L quntum numbers
     for i in xrange(qnmax+1):
-        file = dir + inputfile.replace('j', 'j'+str(i))
+        file = dir_loc + inputfile.replace('j', 'j'+str(i))
         try:
             data = np.sort(np.loadtxt(file, usecols=(1,)))
         except IOError:  # maximum quantum number reached set qnmax and return
             qnmax = i-1
-            return bs, qnmax
+            return bound_states, qnmax
         if len(np.atleast_1d(data)) == 1:
             data = np.reshape(data, 1)  # accounts for behavior of 0d arrays
-        bs.append(data)
-    return bs, qnmax
+        bound_states.append(data)
+    return bound_states, qnmax
 
 
 class AtomMoleculeDOS:
     def __init__(self, filen):
         self.systems = get_data(filen)
 
-    def _compute_dos(self, J, MQN, bs_c, bs_d, vmax, energy_range=10.0,
-                     energy_offset=0.0):
+    def _compute_dos(self, J, MQN, bound_states_c, bound_states_d, vmax,
+                     energy_range=10.0, energy_offset=0.0):
         """
         computes the dos for an atom moleucle collsiions as described in
         Statistical aspects of ultracold resonant scattering Mayle, Ruzic and
@@ -65,8 +65,8 @@ class AtomMoleculeDOS:
         Variables
         J       - total J quantum number.
         MQN     - MJ projection quantum number.
-        bs_c    - list of boundstates of the complex obtained from _read_data
-        bs_d    - list of boundstates of the molecule obtained from _read_data
+        bound_states_c - boundstates of the complex obtained from _read_data
+        bound_states_d - boundstates of the molecule obtained from _read_data
         vmax    - maximum vibrational quantum number.
         energy_range  - dos = number of states counted/energy range
         energy_offset - calculate dos around energy = energy_offset
@@ -74,31 +74,34 @@ class AtomMoleculeDOS:
         if abs(MQN) > abs(J):
             print 'physically impossible (abs(MJ) > abs(J))'
             return
-        limit = (energy_range/2.0)*KtoEh  # convert energy_range K to hartrees
-        energy_offset *= KtoEh
+        limit = (energy_range/2.0)*K2EH  # convert energy_range K to hartrees
+        energy_offset *= K2EH
         outside = np.ma.masked_outside  # mask enties in list outside range
         count = np.ma.count  # counts the number of unmasked entries in a list
-        abs_gs = bs_d[0][0]
+        abs_gs = bound_states_d[0][0]
         num = 0
-        for n in xrange(len(bs_d)):  # looping over rotational state of dimer a
-            for l in xrange(len(bs_c)):  # looping over all l constant with J
+        # looping over rotational state of dimer a
+        for n in xrange(len(bound_states_d)):
+            # looping over all l constant with J
+            for l in xrange(len(bound_states_c)):
                 # only include pairs which couple to form J
                 if abs(n-l) <= J and n+l >= J:
                     # looping over all vibrational levels of a
-                    for v in xrange(min(len(bs_d[n]), vmax+1)):
+                    for v in xrange(min(len(bound_states_d[n]), vmax+1)):
                         # degeneracy
                         d = len(xrange(max(-l, MQN-n), min(l, MQN+n)))+1
-                        threshold_energy = bs_d[n][v]-abs_gs
-                        num += count(outside(bs_c[l],
+                        threshold_energy = bound_states_d[n][v]-abs_gs
+                        num += count(outside(bound_states_c[l],
                                      -limit-threshold_energy+energy_offset,
                                      limit-threshold_energy+energy_offset))*d
 
         dos = (float(num)/energy_range)*1.0E-3
-        lt = dos*1.0E3*EhtoK*2.0*pi*AtomicUnitOfTime*1.0e9
+        lt = dos*1.0E3*EH2K*2.0*pi*ATOMICUNITOFTIME*1.0e9
         # return dos in mK-1 and lifetime in ns
         return dos, lt
 
-    def _compute_num_open(self, J, MQN, bs_c, bs_d, vmax, energy_offset=0.0):
+    def _compute_num_open(self, J, MQN, bound_states_c, bound_states_d,
+                          vmax, energy_offset=0.0):
         """
         computes the number of threshold channels of the complex with energy
         less than energy_offset.
@@ -107,8 +110,8 @@ class AtomMoleculeDOS:
         VAriables
         J       - total J quantum number.
         MQN     - MJ projection quantum number.
-        bs_c    - list of boundstates of the complex obtained from _read_data
-        bs_d    - list of boundstates of the molecule obtained from _read_data
+        bound_states_c - boundstates of the complex obtained from _read_data
+        bound_states_d - boundstates of the molecule obtained from _read_data
         vmax    - maximum vibrational quantum number.
         energy_offset - calculate number of threshold channels of the complex
                         with energy less than energy_offset.
@@ -116,16 +119,18 @@ class AtomMoleculeDOS:
         if abs(MQN) > abs(J):
             print 'physically impossible (abs(MJ) > abs(J))'
             return
-        energy_offset *= KtoEh
-        abs_gs = bs_d[0][0]
+        energy_offset *= K2EH
+        abs_gs = bound_states_d[0][0]
         num_open = 0
-        for n in xrange(len(bs_d)):  # looping over rotational state of dimer a
-            for l in xrange(len(bs_c)):  # looping over all l constant with J
+        # looping over rotational state of dimer a
+        for n in xrange(len(bound_states_d)):
+            # looping over all l constant with J
+            for l in xrange(len(bound_states_c)):
                 # include pairs of rotational levels which couple to form J
                 if abs(n-l) <= J and n+l >= J:
                     # looping over all vibrational levels of a
-                    for v in xrange(min(len(bs_d[n]), vmax+1)):
-                        threshold_energy = bs_d[n][v]-abs_gs
+                    for v in xrange(min(len(bound_states_d[n]), vmax+1)):
+                        threshold_energy = bound_states_d[n][v]-abs_gs
                         if threshold_energy < energy_offset:
                             num_open += 1
         return num_open
@@ -141,18 +146,20 @@ class AtomMoleculeDOS:
         energy_offset - calculate dos around energy = energy_offset
         """
         lmax = nmax + J
-        self.bs_d, self.nmax = _read_data(self.systems[key]['dimer_dirn'],
-                                          self.systems[key]['dimer_filen'],
-                                          nmax)
-        self.bs_c, self.lmax = _read_data(self.systems[key]['cmplx_dirn'],
-                                          self.systems[key]['cmplx_filen'],
-                                          lmax)
+        self.bound_states_d, self.nmax = _read_data(
+            self.systems[key]['dimer_dirn'],
+            self.systems[key]['dimer_filen'],
+            nmax)
+        self.bound_states_c, self.lmax = _read_data(
+            self.systems[key]['cmplx_dirn'],
+            self.systems[key]['cmplx_filen'],
+            lmax)
         self.dos,  self.lt = AtomMoleculeDOS._compute_dos(
             self,
             J,
             MQN,
-            self.bs_c,
-            self.bs_d,
+            self.bound_states_c,
+            self.bound_states_d,
             vmax=vmax,
             energy_offset=energy_offset)
         return self.dos, self.lt
@@ -169,18 +176,20 @@ class AtomMoleculeDOS:
         energy_offset - calculate dos around energy = energy_offset
         """
         lmax = nmax + J
-        self.bs_d, self.nmax = _read_data(self.systems[key]['dimer_dirn'],
-                                          self.systems[key]['dimer_filen'],
-                                          nmax)
-        self.bs_c, self.lmax = _read_data(self.systems[key]['cmplx_dirn'],
-                                          self.systems[key]['cmplx_filen'],
-                                          lmax)
+        self.bound_states_d, self.nmax = _read_data(
+            self.systems[key]['dimer_dirn'],
+            self.systems[key]['dimer_filen'],
+            nmax)
+        self.bound_states_c, self.lmax = _read_data(
+            self.systems[key]['cmplx_dirn'],
+            self.systems[key]['cmplx_filen'],
+            lmax)
         self.num_open = AtomMoleculeDOS._compute_num_open(
             self,
             J,
             MQN,
-            self.bs_c,
-            self.bs_d,
+            self.bound_states_c,
+            self.bound_states_d,
             vmax=vmax,
             energy_offset=energy_offset)
         return self.num_open
@@ -191,7 +200,8 @@ class MoleculeMoleculeDOS:
         self.systems = get_data(filen)
 
     def _compute_dos_MoleculeMolecule(self, J, MJ, nmax, vmax, lmax,
-                                      bs_d, bs_c, energy_range=10.0):
+                                      bound_states_d, bound_states_c,
+                                      energy_range=10.0):
         """
         computes the dos for an atom moleucle collsiions as described in
         Scattering of Ultracold Molecules in the Highly Resonant Regime --
@@ -199,8 +209,8 @@ class MoleculeMoleculeDOS:
         Variables
         J       - total J quantum number.
         MQN     - MJ projection quantum number.
-        bs_c    - list of boundstates of the complex obtained from _read_data
-        bs_d    - list of boundstates of the molecule obtained from _read_data
+        bound_states_c - boundstates of the complex obtained from _read_data
+        bound_states_d - boundstates of the molecule obtained from _read_data
         vmax    - maximum vibrational quantum number.
         lmax    - maximum end-over-end rotational quantum number of the two
                   molecules
@@ -211,25 +221,29 @@ class MoleculeMoleculeDOS:
             print 'physically impossible (abs(MJ) > abs(J))'
             return
         num = 0  # variable to hold the number of states between limits
-        limit = (energy_range/2.0)*KtoEh  # convert energy_range K to hartrees
-        abs_gs = bs_d[0][0]  # the energy of the absolubte ground state
+        limit = (energy_range/2.0)*K2EH  # convert energy_range K to hartrees
+        abs_gs = bound_states_d[0][0]  # energy of the absolute ground state
         for N in xrange(max(0, J-lmax), min(2*nmax, lmax-J)+1):
             for l in xrange(abs(J-N), min(lmax, J+N)+1):
                 for n1 in xrange(max(0, N-nmax), nmax+1):
                     for n2 in xrange(abs(N-n1), min(N+n1, nmax)+1):
                         # looping over all vibrational levels of dimer1
-                        for v1 in xrange(min(len(bs_d[n1]), vmax+1)):
+                        for v1 in xrange(min(len(bound_states_d[n1]), vmax+1)):
                             # looping over all vibrational levels of dimer2
-                            for v2 in xrange(min(len(bs_d[n2]), vmax+1)):
-                                threshold_energy = (bs_d[n1][v1]-abs_gs +
-                                                    bs_d[n2][v2]-abs_gs)
-                                if bs_c[l][0] > limit-threshold_energy:
+                            for v2 in xrange(min(len(bound_states_d[n2]),
+                                             vmax+1)):
+                                threshold_energy = (bound_states_d[n1][v1] -
+                                                    abs_gs +
+                                                    bound_states_d[n2][v2] -
+                                                    abs_gs)
+                                if (bound_states_c[l][0] >
+                                        limit-threshold_energy):
                                     # the lowest state is higher than highest
                                     # threshold
                                     break
                                 else:
                                     start_end = np.searchsorted(
-                                        bs_c[l],
+                                        bound_states_c[l],
                                         [-limit-threshold_energy,
                                          limit-threshold_energy],
                                         'left')
@@ -238,7 +252,7 @@ class MoleculeMoleculeDOS:
         # return dos in per uK i.e.times 10**-6K
         dos = (float(num)/energy_range)*1.0E-6
         # return lifetime in ms
-        lt = dos*1.0E6*EhtoK*2.0*pi*AtomicUnitOfTime * 1.0e3
+        lt = dos*1.0E6*EH2K*2.0*pi*ATOMICUNITOFTIME * 1.0e3
         return dos, lt
 
     def get_dos_MoleculeMolecule(self, key, J=0, MQN=0, nmax=100, vmax=999):
@@ -252,12 +266,15 @@ class MoleculeMoleculeDOS:
         energy_offset - calculate dos around energy = energy_offset
         """
         lmax = 2*nmax+J
-        self.bs_d, self.nmax = _read_data(self.systems[key]['dimer_dirn'],
-                                          self.systems[key]['dimer_filen'],
-                                          nmax)
-        self.bs_c, self.lmax = _read_data(self.systems[key]['cmplx_dirn'],
-                                          self.systems[key]['cmplx_filen'],
-                                          lmax)
-        self.dos,  self.lt = MoleculeMoleculeDOS._compute_dos_MoleculeMolecule(
-            self, J, MQN, self.nmax, vmax, self.lmax, self.bs_d, self.bs_c)
-        return self.dos,  self.lt
+        self.bound_states_d, self.nmax = _read_data(
+            self.systems[key]['dimer_dirn'],
+            self.systems[key]['dimer_filen'],
+            nmax)
+        self.bound_states_c, self.lmax = _read_data(
+            self.systems[key]['cmplx_dirn'],
+            self.systems[key]['cmplx_filen'],
+            lmax)
+        self.dos, self.lt = MoleculeMoleculeDOS._compute_dos_MoleculeMolecule(
+            self, J, MQN, self.nmax, vmax, self.lmax,
+            self.bound_states_d, self.bound_states_c)
+        return self.dos, self.lt
