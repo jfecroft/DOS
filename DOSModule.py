@@ -304,6 +304,6 @@ class MMDOS(object):
             self.systems[key]['cmplx_filen'],
             lmax)
         self.dos, self.lifetime = MMDOS._mm_dos(
-            self, jqn, mqn, self.nmax, vmax, self.lmax,
+            jqn, mqn, self.nmax, vmax, self.lmax,
             self.bound_states_d, self.bound_states_c)
         return self.dos, self.lifetime

@@ -21,16 +21,16 @@ print 'system  dos(uK-1) lt(ms)'
 # (2013).
 for system in MAYLE_ALKALIDIMERPLUSDIMER.systems.keys():
     dos, lt = MAYLE_ALKALIDIMERPLUSDIMER.mm_dos(system,
-                                                J=J,
-                                                MQN=MQN,
+                                                jqn=J,
+                                                mqn=MQN,
                                                 nmax=NMAX,
                                                 vmax=VMAX)
     print system, dos, lt
 
 for system in JFEC_ALKALIDIMERPLUSDIMER.systems.keys():
     dos, lt = JFEC_ALKALIDIMERPLUSDIMER.mm_dos(system,
-                                               J=J,
-                                               MQN=MQN,
+                                               jqn=J,
+                                               mqn=MQN,
                                                nmax=NMAX,
                                                vmax=VMAX)
     print system, dos, lt
