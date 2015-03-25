@@ -33,7 +33,7 @@ def get_data(filen):
         for i, item in enumerate(items):
             try:
                 items[i] = float(item)
-            except IOError:
+            except ValueError:
                 pass
         sub_dict = dict(zip(keys, items))
         data_dict.update({sub_dict['sys']: sub_dict})
@@ -176,7 +176,6 @@ class AMDOS(object):
             self.systems[key]['cmplx_filen'],
             lmax)
         self.dos, self.lifetime = AMDOS._dos(
-            self,
             jqn,
             mqn,
             self.bound_states_c,
