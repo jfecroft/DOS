@@ -1,6 +1,7 @@
 """
 Module for comutation of densities of states for atom molecule collsions
 """
+import yaml
 import numpy as np
 import scipy.constants
 from math import pi
@@ -18,10 +19,18 @@ ATOMICUNITOFTIME = scipy.constants.physical_constants["atomic unit of time"][0]
 
 
 def get_data(filen):
-    """reads a file of the form 1st line heading columns
-       2nd lines on values for those headings
-       returns a nested dictionary
-       converts values to float if possible"""
+    """
+    reads a file of the form 1st line heading columns
+    2nd lines on values for those headings
+    returns a nested dictionary
+    converts values to float if possible
+    TODO update the other txt files to yml and remove old method
+    """
+    if filen.endswith('yml'):
+        with open(filen, 'r') as f:
+            doc = yaml.load(f)[0]
+        return doc['sys']
+        
     open_file = open(filen, "r")
     lines = open_file.readlines()
     keys = lines[0].split()

@@ -4,6 +4,7 @@ Reproduce published results
 import DOSModule
 
 FILEN = 'Jfec_AlkaliAtomPlusDimer.txt'
+FILEN = 'Jfec_AlkaliAtomPlusDimer.yml'
 JFEC_ALKALIATOMPLUSDIMER = DOSModule.AMDOS(FILEN)
 FILEN = 'Mayle_AlkaliAtomPlusDimer.txt'
 MAYLE_ALKALIATOMPLUSDIMER = DOSModule.AMDOS(FILEN)
