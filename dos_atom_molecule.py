@@ -4,16 +4,16 @@ Reproduce published results
 import DOSModule
 
 FILEN = 'Jfec_AlkaliAtomPlusDimer.txt'
-JFEC_ALKALIATOMPLUSDIMER = DOSModule.AtomMoleculeDOS(FILEN)
+JFEC_ALKALIATOMPLUSDIMER = DOSModule.AMDOS(FILEN)
 FILEN = 'Mayle_AlkaliAtomPlusDimer.txt'
-MAYLE_ALKALIATOMPLUSDIMER = DOSModule.AtomMoleculeDOS(FILEN)
+MAYLE_ALKALIATOMPLUSDIMER = DOSModule.AMDOS(FILEN)
 FILEN = 'HeliumPlusHydrocarbon.txt'
-HELIUMPLUSHYDROCARBON = DOSModule.AtomMoleculeDOS(FILEN)
+HELIUMPLUSHYDROCARBON = DOSModule.AMDOS(FILEN)
 
 
-J, MQN = 0, 0  # total J quantum number
+JQN, MQN = 0, 0  # total JQN quantum number
 NMAX, VMAX = 100, 9999  # maximum rotational and vibrational quantum numbers
-# lmax is determined by J and NMAX
+# lmax is determined by JQN and NMAX
 COLLISION_ENERGY = 0.0
 
 print 'system  dos(mK-1) lt(ns)'
@@ -22,7 +22,7 @@ print 'system  dos(mK-1) lt(ns)'
 #            J. F. E. Croft and J. L. Bohn, Phys. Rev. A 89, 102714 (2014).
 for system in JFEC_ALKALIATOMPLUSDIMER.systems.keys():
     dos, lt = JFEC_ALKALIATOMPLUSDIMER.get_dos(system,
-                                               J=J,
+                                               JQN=JQN,
                                                MQN=MQN,
                                                nmax=NMAX,
                                                vmax=VMAX,
@@ -35,7 +35,7 @@ for system in JFEC_ALKALIATOMPLUSDIMER.systems.keys():
 # M. Mayle, B. P. Ruzic, and J. L. Bohn, Phys. Rev. A 85, 062712 (2012).
 for system in MAYLE_ALKALIATOMPLUSDIMER.systems.keys():
     dos, lt = MAYLE_ALKALIATOMPLUSDIMER.get_dos(system,
-                                                J=J,
+                                                JQN=JQN,
                                                 MQN=MQN,
                                                 nmax=NMAX,
                                                 vmax=VMAX,
@@ -46,7 +46,7 @@ for system in MAYLE_ALKALIATOMPLUSDIMER.systems.keys():
 # as yet unpublished
 for system in HELIUMPLUSHYDROCARBON.systems.keys():
     dos, lt = HELIUMPLUSHYDROCARBON.get_dos(system,
-                                            J=J,
+                                            JQN=JQN,
                                             MQN=MQN,
                                             nmax=NMAX,
                                             vmax=VMAX,
