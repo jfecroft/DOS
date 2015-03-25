@@ -96,9 +96,9 @@ class AtomMoleculeDOS:
                                      limit-threshold_energy+energy_offset))*d
 
         dos = (float(num)/energy_range)*1.0E-3
-        lt = dos*1.0E3*EH2K*2.0*pi*ATOMICUNITOFTIME*1.0e9
+        lifetime = dos*1.0E3*EH2K*2.0*pi*ATOMICUNITOFTIME*1.0e9
         # return dos in mK-1 and lifetime in ns
-        return dos, lt
+        return dos, lifetime
 
     def _compute_num_open(self, J, MQN, bound_states_c, bound_states_d,
                           vmax, energy_offset=0.0):
@@ -154,7 +154,7 @@ class AtomMoleculeDOS:
             self.systems[key]['cmplx_dirn'],
             self.systems[key]['cmplx_filen'],
             lmax)
-        self.dos,  self.lt = AtomMoleculeDOS._compute_dos(
+        self.dos,  self.lifetime = AtomMoleculeDOS._compute_dos(
             self,
             J,
             MQN,
@@ -162,7 +162,7 @@ class AtomMoleculeDOS:
             self.bound_states_d,
             vmax=vmax,
             energy_offset=energy_offset)
-        return self.dos, self.lt
+        return self.dos, self.lifetime
 
     def get_num_open(self, key, J=0, MQN=0, nmax=100, vmax=9999,
                      energy_offset=0.0):
@@ -252,8 +252,8 @@ class MoleculeMoleculeDOS:
         # return dos in per uK i.e.times 10**-6K
         dos = (float(num)/energy_range)*1.0E-6
         # return lifetime in ms
-        lt = dos*1.0E6*EH2K*2.0*pi*ATOMICUNITOFTIME * 1.0e3
-        return dos, lt
+        lifetime = dos*1.0E6*EH2K*2.0*pi*ATOMICUNITOFTIME * 1.0e3
+        return dos, lifetime
 
     def get_dos_MoleculeMolecule(self, key, J=0, MQN=0, nmax=100, vmax=999):
         """
@@ -274,7 +274,7 @@ class MoleculeMoleculeDOS:
             self.systems[key]['cmplx_dirn'],
             self.systems[key]['cmplx_filen'],
             lmax)
-        self.dos, self.lt = MoleculeMoleculeDOS._compute_dos_MoleculeMolecule(
+        self.dos, self.lifetime = MoleculeMoleculeDOS._compute_dos_MoleculeMolecule(
             self, J, MQN, self.nmax, vmax, self.lmax,
             self.bound_states_d, self.bound_states_c)
-        return self.dos, self.lt
+        return self.dos, self.lifetime
