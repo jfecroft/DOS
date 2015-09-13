@@ -27,10 +27,10 @@ def get_data(filen):
     TODO update the other txt files to yml and remove old method
     """
     if filen.endswith('yml'):
-        with open(filen, 'r') as f:
-            doc = yaml.load(f)[0]
+        with open(filen, 'r') as ofile:
+            doc = yaml.load(ofile)[0]
         return doc['sys']
-        
+
     open_file = open(filen, "r")
     lines = open_file.readlines()
     keys = lines[0].split()
