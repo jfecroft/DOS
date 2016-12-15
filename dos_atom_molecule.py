@@ -40,4 +40,5 @@ for system, input_dict in HELIUMPLUSHYDROCARBON.iteritems():
     dos, lt = get_dos(**input_dict)
     output.append([system, dos, lt])
 
+output.sort()
 print tabulate(output, headers=header)

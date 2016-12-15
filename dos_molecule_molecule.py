@@ -1,36 +1,34 @@
 """
 Reproduce publish molecule moleucle lifetimes
 """
-import DOSModule
+from DOSModule import get_data, get_mm_dos
+from tabulate import tabulate
 
 # these can take awhile (days) to run for full converged results
 
 FILEN = 'Jfec_AlkaliDimerPlusDimer.yml'
-JFEC_ALKALIDIMERPLUSDIMER = DOSModule.MMDOS(FILEN)
+JFEC_ALKALIDIMERPLUSDIMER = get_data(FILEN)
 FILEN = 'Mayle_AlkaliDimerPlusDimer.yml'
-MAYLE_ALKALIDIMERPLUSDIMER = DOSModule.MMDOS(FILEN)
-J, MQN = 0, 0  # total J quantum number
-NMAX, VMAX = 5, 5  # maximum rotational and vibrational quantum numbers
+MAYLE_ALKALIDIMERPLUSDIMER = get_data(FILEN)
+# J, MQN = 0, 0  # total J quantum number
+# NMAX, VMAX = 5, 5  # maximum rotational and vibrational quantum numbers
 # lmax is determined by J and NMAX
 
-print 'system  dos(uK-1) lt(ms)'
 
+header = ['system', 'dos(mK-1)','lt(ns)']
+output = []
 # reproducing data published in
 # Scattering of Ultracold Molecules in the Highly Resonant Regime --
 # M. Mayle, G. Quemener, B. P. Ruzic, and J. L. Bohn, Phys. Rev. A 87, 012709
 # (2013).
-for system in MAYLE_ALKALIDIMERPLUSDIMER.systems.keys():
-    dos, lt = MAYLE_ALKALIDIMERPLUSDIMER.mm_dos(system,
-                                                jqn=J,
-                                                mqn=MQN,
-                                                nmax=NMAX,
-                                                vmax=VMAX)
-    print system, dos, lt
+for system, input_dict in MAYLE_ALKALIDIMERPLUSDIMER.iteritems():
+    dos, lt = get_mm_dos(**input_dict)
+    output.append([system, dos, lt])
 
-for system in JFEC_ALKALIDIMERPLUSDIMER.systems.keys():
-    dos, lt = JFEC_ALKALIDIMERPLUSDIMER.mm_dos(system,
-                                               jqn=J,
-                                               mqn=MQN,
-                                               nmax=NMAX,
-                                               vmax=VMAX)
-    print system, dos, lt
+for system, input_dict in JFEC_ALKALIDIMERPLUSDIMER.iteritems():
+    dos, lt = get_mm_dos(**input_dict)
+    output.append([system, dos, lt])
+
+
+output.sort()
+print tabulate(output, headers=header)
