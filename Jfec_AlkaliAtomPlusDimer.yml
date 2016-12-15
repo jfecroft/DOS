@@ -4,6 +4,7 @@ jfec_cs2cs:
  dimer_dirn: data/alkalis/jfec_cs2/
  dimer_filen: cscs_results_j.dat
  sys: jfec_cs2cs
+ nmax: 250
 jfec_k2k:
  cmplx_dirn: data/alkalis/jfec_k2k/
  cmplx_filen: kk2_results_j.dat
