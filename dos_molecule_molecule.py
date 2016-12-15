@@ -5,9 +5,9 @@ import DOSModule
 
 # these can take awhile (days) to run for full converged results
 
-FILEN = 'Jfec_AlkaliDimerPlusDimer.txt'
+FILEN = 'Jfec_AlkaliDimerPlusDimer.yml'
 JFEC_ALKALIDIMERPLUSDIMER = DOSModule.MMDOS(FILEN)
-FILEN = 'Mayle_AlkaliDimerPlusDimer.txt'
+FILEN = 'Mayle_AlkaliDimerPlusDimer.yml'
 MAYLE_ALKALIDIMERPLUSDIMER = DOSModule.MMDOS(FILEN)
 J, MQN = 0, 0  # total J quantum number
 NMAX, VMAX = 5, 5  # maximum rotational and vibrational quantum numbers

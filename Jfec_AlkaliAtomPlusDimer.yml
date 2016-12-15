@@ -1,0 +1,6 @@
+{jfec_cs2cs: {cmplx_dirn: data/alkalis/jfec_cs2cs_singlet_lj/, cmplx_filen: cs2cs_results_j.dat,
+    dimer_dirn: data/alkalis/jfec_cs2/, dimer_filen: cscs_results_j.dat, sys: jfec_cs2cs},
+  jfec_k2k: {cmplx_dirn: data/alkalis/jfec_k2k/, cmplx_filen: kk2_results_j.dat, dimer_dirn: data/alkalis/jfec_k2/,
+    dimer_filen: kk_results_j.dat, sys: jfec_k2k}, jfec_li2li: {cmplx_dirn: data/alkalis/jfec_li2li_lj/,
+    cmplx_filen: lili2_results_j.dat, dimer_dirn: data/alkalis/jfec_li2_lj/, dimer_filen: lili_results_j.dat,
+    sys: jfec_li2li}}

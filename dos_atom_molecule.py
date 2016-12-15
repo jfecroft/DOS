@@ -3,11 +3,11 @@ Reproduce published results
 """
 import DOSModule
 
-FILEN = 'Jfec_AlkaliAtomPlusDimer.txt'
+FILEN = 'Jfec_AlkaliAtomPlusDimer.yml'
 JFEC_ALKALIATOMPLUSDIMER = DOSModule.AMDOS(FILEN)
-FILEN = 'Mayle_AlkaliAtomPlusDimer.txt'
+FILEN = 'Mayle_AlkaliAtomPlusDimer.yml'
 MAYLE_ALKALIATOMPLUSDIMER = DOSModule.AMDOS(FILEN)
-FILEN = 'HeliumPlusHydrocarbon.txt'
+FILEN = 'HeliumPlusHydrocarbon.yml'
 HELIUMPLUSHYDROCARBON = DOSModule.AMDOS(FILEN)
 
 
