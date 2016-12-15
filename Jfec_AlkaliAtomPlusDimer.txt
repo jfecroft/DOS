@@ -1,4 +1,0 @@
-sys  cmplx_dirn dimer_filen dimer_dirn cmplx_filen
-jfec_k2k  data/alkalis/jfec_k2k/ kk_results_j.dat  data/alkalis/jfec_k2/ kk2_results_j.dat
-jfec_li2li  data/alkalis/jfec_li2li_lj/ lili_results_j.dat  data/alkalis/jfec_li2_lj/ lili2_results_j.dat
-jfec_cs2cs  data/alkalis/jfec_cs2cs/ cscs_results_j.dat  data/alkalis/jfec_cs2/ cscs2_results_j.dat
