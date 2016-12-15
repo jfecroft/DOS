@@ -29,24 +29,6 @@ def get_data(filen):
             data_dict = yaml.load(input)
         except yaml.YAMLError as exc:
             print(exc)
-#     open_file = open(filen, "r")
-#     lines = open_file.readlines()
-#     keys = lines[0].split()
-
-#     data_dict = OrderedDict()
-
-#     for line in lines[1:]:
-#         items = line.split()
-#         for i, item in enumerate(items):
-#             try:
-#                 items[i] = float(item)
-#             except ValueError:
-#                 pass
-#         sub_dict = dict(zip(keys, items))
-#         data_dict.update({sub_dict['sys']: sub_dict})
-#     outname = filen.replace('txt','yml')
-#     with open(outname, 'w') as outfile:
-#             yaml.dump(dict(data_dict), outfile, default_flow_style=True)
     return data_dict
 
 
