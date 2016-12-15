@@ -17,7 +17,7 @@ HELIUMPLUSHYDROCARBON = get_data(FILEN)
 # lmax is determined by JQN and NMAX
 # COLLISION_ENERGY = 0.0
 
-header = ['system', 'dos(mK-1)','lt(ns)']
+header = ['system', 'dos(mK-1)', 'lt(ns)']
 output = []
 # printing dos and lt for alkali atom + dimer collisions as published in
 # Long-Lived Complexes and Chaos in Ultracold Molecular Collisions
