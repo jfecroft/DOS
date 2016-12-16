@@ -6,7 +6,7 @@
  DHART = 0.00767286856565,
  NPRIN = 0,
  NWRIT = 550,
- L = 186, 
+ L = 286, 
  RMAX = 200.0D0,
  RMIN = 5.0D0,
  MORLJ = .FALSE.

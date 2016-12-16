@@ -35,12 +35,13 @@ def run_1d_schrodinger(inputfile_name,outputfile_name,L):
  return()
 
 ############################################
-lmax = 250
+lmin = 250
+lmax = 350
 inputfile         = 'input.txt'
 outputfile        = 'fort.10'
 
 #generate to states of the dimer for different n upto nmax
-for i in range(0,lmax+1):
+for i in range(lmin, lmax+1):
  run_1d_schrodinger(inputfile,outputfile,i)
 # shutil.copyfile(outputfile,sys+'_results_j'+str(i)+'.dat')
  try:
