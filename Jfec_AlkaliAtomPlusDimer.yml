@@ -17,3 +17,15 @@ jfec_li2li:
  dimer_dirn: data/alkalis/jfec_li2_lj/
  dimer_filen: lili_results_j.dat
  sys: jfec_li2li
+jfec_krb_k:
+ cmplx_dirn: data/alkalis/jfec_k40rb87_k40/
+ cmplx_filen: results_j.dat
+ dimer_dirn: data/alkalis/jfec_k40rb87/
+ dimer_filen: results_j.dat
+ nmax: 270
+jfec_kk_rb:
+ cmplx_dirn: data/alkalis/jfec_k40k40_rb87/
+ cmplx_filen: results_j.dat
+ dimer_dirn: data/alkalis/jfec_k40k40/
+ dimer_filen: results_j.dat
+ nmax: 270
