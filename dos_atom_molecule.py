@@ -41,4 +41,4 @@ for system, input_dict in HELIUMPLUSHYDROCARBON.iteritems():
     output.append([system, dos, lt])
 
 output.sort()
-print tabulate(output, headers=header)
+print tabulate(output, headers=header, tablefmt='grid')
