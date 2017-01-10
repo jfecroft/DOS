@@ -29,3 +29,9 @@ jfec_kk_rb:
  dimer_dirn: data/alkalis/jfec_k40k40/
  dimer_filen: results_j.dat
  nmax: 270
+jfec_li_liyb:
+ cmplx_dirn: data/alkalis/jfec_li6yb174_li6/
+ cmplx_filen: results_j.dat
+ dimer_dirn: data/alkalis/jfec_li6yb174/
+ dimer_filen: results_j.dat
+ nmax: 270
