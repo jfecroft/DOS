@@ -75,7 +75,7 @@ def compute_dos(jqn, mqn, bound_states_c, bound_states_d, vmax,
     abs_gs = bound_states_d[0][0]
     num = 0
     # looping over rotational state of dimer a
-    for nqn in xrange(len(bound_states_d)):
+    for nqn in xrange(0,len(bound_states_d),2):
         # looping over all l constant with jqn
         for lqn in xrange(len(bound_states_c)):
             # only include pairs which couple to form jqn
@@ -85,6 +85,7 @@ def compute_dos(jqn, mqn, bound_states_c, bound_states_d, vmax,
                     # degeneracy
                     deg = len(xrange(max(-lqn, mqn-nqn),
                                      min(lqn, mqn+nqn)))+1
+                    # deg = 1
                     threshold_energy = bound_states_d[nqn][vqn]-abs_gs
                     num += count(
                         outside(bound_states_c[lqn],

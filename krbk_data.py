@@ -34,4 +34,5 @@ for sys, sys_data in data.iteritems():
         sys_data['De'] = sys_data['De']*wavenumbers2hartree
         sys_data['C12'] = sys_data['C6']**2/(4*sys_data['De'])
         sys_data['sigma'] = (sys_data['C12']/sys_data['C6'])**(1.0/6.0)
+        sys_data['Re'] = sys_data['sigma']*2.0**(1.0/6.0)
         print sys, sys_data
