@@ -75,7 +75,7 @@ def compute_dos(jqn, mqn, bound_states_c, bound_states_d, vmax,
     abs_gs = bound_states_d[0][0]
     num = 0
     # looping over rotational state of dimer a
-    for nqn in xrange(0,len(bound_states_d),2):
+    for nqn in xrange(0,len(bound_states_d)):
         # looping over all l constant with jqn
         for lqn in xrange(len(bound_states_c)):
             # only include pairs which couple to form jqn
