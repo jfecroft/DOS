@@ -1,37 +1,37 @@
 jfec_cs2cs:
- cmplx_dirn: data/alkalis/jfec_cs2cs_singlet_lj/
- cmplx_filen: cs2cs_results_j.dat
- dimer_dirn: data/alkalis/jfec_cs2/
- dimer_filen: cscs_results_j.dat
- sys: jfec_cs2cs
- nmax: 250
+	cmplx_dirn: data/alkalis/jfec_cs2cs_singlet_lj/
+	cmplx_filen: cs2cs_results_j.dat
+	dimer_dirn: data/alkalis/jfec_cs2/
+	dimer_filen: cscs_results_j.dat
+	sys: jfec_cs2cs
+	nmax: 250
 jfec_k2k:
- cmplx_dirn: data/alkalis/jfec_k2k/
- cmplx_filen: kk2_results_j.dat
- dimer_dirn: data/alkalis/jfec_k2/
- dimer_filen: kk_results_j.dat
- sys: jfec_k2k
+	cmplx_dirn: data/alkalis/jfec_k2k/
+	cmplx_filen: kk2_results_j.dat
+	dimer_dirn: data/alkalis/jfec_k2/
+	dimer_filen: kk_results_j.dat
+	sys: jfec_k2k
 jfec_li2li:
- cmplx_dirn: data/alkalis/jfec_li2li_lj/
- cmplx_filen: lili2_results_j.dat
- dimer_dirn: data/alkalis/jfec_li2_lj/
- dimer_filen: lili_results_j.dat
- sys: jfec_li2li
+	cmplx_dirn: data/alkalis/jfec_li2li_lj/
+	cmplx_filen: lili2_results_j.dat
+	dimer_dirn: data/alkalis/jfec_li2_lj/
+	dimer_filen: lili_results_j.dat
+	sys: jfec_li2li
 jfec_krb_k:
- cmplx_dirn: data/alkalis/jfec_k40rb87_k40/
- cmplx_filen: results_j.dat
- dimer_dirn: data/alkalis/jfec_k40rb87/
- dimer_filen: results_j.dat
- nmax: 270
+	cmplx_dirn: data/alkalis/jfec_k40rb87_k40/
+	cmplx_filen: results_j.dat
+	dimer_dirn: data/alkalis/jfec_k40rb87/
+	dimer_filen: results_j.dat
+	nmax: 270
 jfec_kk_rb:
- cmplx_dirn: data/alkalis/jfec_k40k40_rb87/
- cmplx_filen: results_j.dat
- dimer_dirn: data/alkalis/jfec_k40k40/
- dimer_filen: results_j.dat
- nmax: 270
+	cmplx_dirn: data/alkalis/jfec_k40k40_rb87/
+	cmplx_filen: results_j.dat
+	dimer_dirn: data/alkalis/jfec_k40k40/
+	dimer_filen: results_j.dat
+	nmax: 270
 jfec_li_liyb:
- cmplx_dirn: data/alkalis/jfec_li6yb174_li6/
- cmplx_filen: results_j.dat
- dimer_dirn: data/alkalis/jfec_li6yb174/
- dimer_filen: results_j.dat
- nmax: 270
+	cmplx_dirn: data/alkalis/jfec_li6yb174_li6/
+	cmplx_filen: results_j.dat
+	dimer_dirn: data/alkalis/jfec_li6yb174/
+	dimer_filen: results_j.dat
+	nmax: 270
