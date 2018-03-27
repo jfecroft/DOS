@@ -3,7 +3,7 @@ mayle_cskcs:
 	cmplx_filen: cskcs_results_j_dvr10000_rauto.dat
 	dimer_dirn: data/alkalis/kcs/
 	dimer_filen: kcs_results_j_dvr10000_rauto.dat
-	sys: mayle_cskcs,
+	sys: mayle_cskcs
 mayle_cslics:
 	cmplx_dirn: data/alkalis/cslics/
 	cmplx_filen: cslics_results_j_dvr10000_rauto.dat
