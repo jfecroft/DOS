@@ -1,5 +1,12 @@
-{mayle_krbkrb: {cmplx_dirn: data/alkalis/krbkrb/, cmplx_filen: krbkrb_results_j_dvr10000_rauto.dat,
-    dimer_dirn: data/alkalis/krb/, dimer_filen: krb_results_j_dvr10000_rauto.dat,
-    sys: mayle_krbkrb}, mayle_rbcsrbcs: {cmplx_dirn: data/alkalis/rbcsrbcs/, cmplx_filen: rbcsrbcs_results_j_dvr10000_rauto.dat,
-    dimer_dirn: data/alkalis/rbcs/, dimer_filen: rbcs_results_j_dvr10000_rauto.dat,
-    sys: mayle_rbcsrbcs}}
+mayle_krbkrb:
+    cmplx_dirn: data/alkalis/krbkrb/
+    cmplx_filen: krbkrb_results_j_dvr10000_rauto.dat
+    dimer_dirn: data/alkalis/krb/
+    dimer_filen: krb_results_j_dvr10000_rauto.dat
+    sys: mayle_krbkrb
+mayle_rbcsrbcs: 
+    cmplx_dirn: data/alkalis/rbcsrbcs/
+    cmplx_filen: rbcsrbcs_results_j_dvr10000_rauto.dat
+    dimer_dirn: data/alkalis/rbcs/
+    dimer_filen: rbcs_results_j_dvr10000_rauto.dat
+    sys: mayle_rbcsrbcs

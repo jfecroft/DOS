@@ -1,13 +1,36 @@
-{jfec_butane: {cmplx_dirn: data/HydrocarbonsPlusHelium/butane/, cmplx_filen: butane_results_j.dat,
-    dimer_dirn: data/hydrocarbon_rovibrational_energy_levels/butane_asymmetrictop_rovibrational_energy_levels/,
-    dimer_filen: butane_results_j.dat, sys: jfec_butane}, jfec_ethane: {cmplx_dirn: data/HydrocarbonsPlusHelium/ethane/,
-    cmplx_filen: ethane_results_j.dat, dimer_dirn: data/hydrocarbon_rovibrational_energy_levels/ethane_asymmetrictop_rovibrational_energy_levels/,
-    dimer_filen: ethane_results_j.dat, sys: jfec_ethane}, jfec_hexane: {cmplx_dirn: data/HydrocarbonsPlusHelium/hexane/,
-    cmplx_filen: hexane_results_j.dat, dimer_dirn: data/hydrocarbon_rovibrational_energy_levels/hexane_asymmetrictop_rovibrational_energy_levels/,
-    dimer_filen: hexane_results_j.dat, sys: jfec_hexane}, jfec_methane: {cmplx_dirn: data/HydrocarbonsPlusHelium/methane/,
-    cmplx_filen: methane_results_j.dat, dimer_dirn: data/hydrocarbon_rovibrational_energy_levels/methane_asymmetrictop_rovibrational_energy_levels/,
-    dimer_filen: methane_results_j.dat, sys: jfec_methane}, jfec_pentane: {cmplx_dirn: data/HydrocarbonsPlusHelium/pentane/,
-    cmplx_filen: pentane_results_j.dat, dimer_dirn: data/hydrocarbon_rovibrational_energy_levels/pentane_asymmetrictop_rovibrational_energy_levels/,
-    dimer_filen: pentane_results_j.dat, sys: jfec_pentane}, jfec_propane: {cmplx_dirn: data/HydrocarbonsPlusHelium/propane/,
-    cmplx_filen: propane_results_j.dat, dimer_dirn: data/hydrocarbon_rovibrational_energy_levels/propane_asymmetrictop_rovibrational_energy_levels/,
-    dimer_filen: propane_results_j.dat, sys: jfec_propane}}
+jfec_butane:
+    cmplx_dirn: data/HydrocarbonsPlusHelium/butane/
+    cmplx_filen: butane_results_j.dat
+    dimer_dirn: data/hydrocarbon_rovibrational_energy_levels/butane_asymmetrictop_rovibrational_energy_levels/
+    dimer_filen: butane_results_j.dat
+    sys: jfec_butane} 
+jfec_ethane:
+    cmplx_dirn: data/HydrocarbonsPlusHelium/ethane/
+    cmplx_filen: ethane_results_j.dat
+    dimer_dirn: data/hydrocarbon_rovibrational_energy_levels/ethane_asymmetrictop_rovibrational_energy_levels/
+    dimer_filen: ethane_results_j.dat
+    sys: jfec_ethane} 
+jfec_hexane:
+    cmplx_dirn: data/HydrocarbonsPlusHelium/hexane/
+    cmplx_filen: hexane_results_j.dat
+    dimer_dirn: data/hydrocarbon_rovibrational_energy_levels/hexane_asymmetrictop_rovibrational_energy_levels/
+    dimer_filen: hexane_results_j.dat
+    sys: jfec_hexane} 
+jfec_methane:
+    cmplx_dirn: data/HydrocarbonsPlusHelium/methane/
+    cmplx_filen: methane_results_j.dat
+    dimer_dirn: data/hydrocarbon_rovibrational_energy_levels/methane_asymmetrictop_rovibrational_energy_levels/
+    dimer_filen: methane_results_j.dat
+    sys: jfec_methane} 
+jfec_pentane:
+    cmplx_dirn: data/HydrocarbonsPlusHelium/pentane/
+    cmplx_filen: pentane_results_j.dat
+    dimer_dirn: data/hydrocarbon_rovibrational_energy_levels/pentane_asymmetrictop_rovibrational_energy_levels/
+    dimer_filen: pentane_results_j.dat
+    sys: jfec_pentane
+jfec_propane:
+    cmplx_dirn: data/HydrocarbonsPlusHelium/propane/
+    cmplx_filen: propane_results_j.dat
+    dimer_dirn: data/hydrocarbon_rovibrational_energy_levels/propane_asymmetrictop_rovibrational_energy_levels/
+    dimer_filen: propane_results_j.dat
+    sys: jfec_propane
