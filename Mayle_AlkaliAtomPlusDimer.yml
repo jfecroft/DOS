@@ -1,60 +1,60 @@
 mayle_cskcs:
-	cmplx_dirn: data/alkalis/cskcs/
-	cmplx_filen: cskcs_results_j_dvr10000_rauto.dat
-	dimer_dirn: data/alkalis/kcs/
-	dimer_filen: kcs_results_j_dvr10000_rauto.dat
-	sys: mayle_cskcs
+    cmplx_dirn: data/alkalis/cskcs/
+    cmplx_filen: cskcs_results_j_dvr10000_rauto.dat
+    dimer_dirn: data/alkalis/kcs/
+    dimer_filen: kcs_results_j_dvr10000_rauto.dat
+    sys: mayle_cskcs
 mayle_cslics:
-	cmplx_dirn: data/alkalis/cslics/
-	cmplx_filen: cslics_results_j_dvr10000_rauto.dat
-	dimer_dirn: data/alkalis/lics/
-	dimer_filen: lics_results_j_dvr10000_rauto.dat
-	sys: mayle_cslics
+    cmplx_dirn: data/alkalis/cslics/
+    cmplx_filen: cslics_results_j_dvr10000_rauto.dat
+    dimer_dirn: data/alkalis/lics/
+    dimer_filen: lics_results_j_dvr10000_rauto.dat
+    sys: mayle_cslics
 mayle_csnacs:
-	cmplx_dirn: data/alkalis/csnacs/
-	cmplx_filen: csnacs_results_j_dvr10000_rauto.dat
-	dimer_dirn: data/alkalis/nacs/
-	dimer_filen: nacs_results_j_dvr10000_rauto.dat
-	sys: mayle_csnacs
+    cmplx_dirn: data/alkalis/csnacs/
+    cmplx_filen: csnacs_results_j_dvr10000_rauto.dat
+    dimer_dirn: data/alkalis/nacs/
+    dimer_filen: nacs_results_j_dvr10000_rauto.dat
+    sys: mayle_csnacs
 mayle_csrbcs:
-	cmplx_dirn: data/alkalis/csrbcs/
-	cmplx_filen: csrbcs_results_j_dvr10000_rauto.dat
-	dimer_dirn: data/alkalis/rbcs/
-	dimer_filen: rbcs_results_j_dvr10000_rauto.dat
-	sys: mayle_csrbcs
+    cmplx_dirn: data/alkalis/csrbcs/
+    cmplx_filen: csrbcs_results_j_dvr10000_rauto.dat
+    dimer_dirn: data/alkalis/rbcs/
+    dimer_filen: rbcs_results_j_dvr10000_rauto.dat
+    sys: mayle_csrbcs
 mayle_klik:
-	cmplx_dirn: data/alkalis/klik/
-	cmplx_filen: klik_results_j_dvr10000_rauto.dat
-	dimer_dirn: data/alkalis/lik/
-	dimer_filen: lik_results_j_dvr10000_rauto.dat
-	sys: mayle_klik
+    cmplx_dirn: data/alkalis/klik/
+    cmplx_filen: klik_results_j_dvr10000_rauto.dat
+    dimer_dirn: data/alkalis/lik/
+    dimer_filen: lik_results_j_dvr10000_rauto.dat
+    sys: mayle_klik
 mayle_knak:
-	cmplx_dirn: data/alkalis/knak/
-	cmplx_filen: knak_results_j_dvr10000_rauto.dat
-	dimer_dirn: data/alkalis/nak/
-	dimer_filen: nak_results_j_dvr10000_rauto.dat
-	sys: mayle_knak
+    cmplx_dirn: data/alkalis/knak/
+    cmplx_filen: knak_results_j_dvr10000_rauto.dat
+    dimer_dirn: data/alkalis/nak/
+    dimer_filen: nak_results_j_dvr10000_rauto.dat
+    sys: mayle_knak
 mayle_nalina:
-	cmplx_dirn: data/alkalis/nalina/
-	cmplx_filen: nalina_results_j_dvr10000_rauto.dat
-	dimer_dirn: data/alkalis/lina/
-	dimer_filen: lina_results_j_dvr10000_rauto.dat
-	sys: mayle_nalina
+    cmplx_dirn: data/alkalis/nalina/
+    cmplx_filen: nalina_results_j_dvr10000_rauto.dat
+    dimer_dirn: data/alkalis/lina/
+    dimer_filen: lina_results_j_dvr10000_rauto.dat
+    sys: mayle_nalina
 mayle_rbkrb:
-	cmplx_dirn: data/alkalis/rbkrb/
-	cmplx_filen: rbkrb_results_j_dvr10000_rauto.dat
-	dimer_dirn: data/alkalis/krb/
-	dimer_filen: krb_results_j_dvr10000_rauto.dat
-	sys: mayle_rbkrb
+    cmplx_dirn: data/alkalis/rbkrb/
+    cmplx_filen: rbkrb_results_j_dvr10000_rauto.dat
+    dimer_dirn: data/alkalis/krb/
+    dimer_filen: krb_results_j_dvr10000_rauto.dat
+    sys: mayle_rbkrb
 mayle_rblirb:
-	cmplx_dirn: data/alkalis/rblirb/
-	cmplx_filen: rblirb_results_j_dvr10000_rauto.dat
-	dimer_dirn: data/alkalis/lirb/
-	dimer_filen: lirb_results_j_dvr10000_rauto.dat
-	sys: mayle_rblirb
+    cmplx_dirn: data/alkalis/rblirb/
+    cmplx_filen: rblirb_results_j_dvr10000_rauto.dat
+    dimer_dirn: data/alkalis/lirb/
+    dimer_filen: lirb_results_j_dvr10000_rauto.dat
+    sys: mayle_rblirb
 mayle_rbnarb:
-	cmplx_dirn: data/alkalis/rbnarb/
-	cmplx_filen: rbnarb_results_j_dvr10000_rauto.dat
-	dimer_dirn: data/alkalis/narb/
-	dimer_filen: narb_results_j_dvr10000_rauto.dat
-	sys: mayle_rbnarb
+    cmplx_dirn: data/alkalis/rbnarb/
+    cmplx_filen: rbnarb_results_j_dvr10000_rauto.dat
+    dimer_dirn: data/alkalis/narb/
+    dimer_filen: narb_results_j_dvr10000_rauto.dat
+    sys: mayle_rbnarb
